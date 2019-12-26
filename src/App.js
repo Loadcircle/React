@@ -1,7 +1,8 @@
 import React from 'react';
 import "./styles/styles.scss"
 import Componente from './Componente'
-import { func } from 'prop-types';
+import Banner from './Banner'
+import Form from './Form'
 
 const items = [
   { 'title' : 'Hola',
@@ -19,6 +20,8 @@ const items = [
 ]
 
 const App = () => (
+  <>
+    <Banner />
     <div className="ed-grid m-grid-3">
       <Componente 
         title="React desde cero" 
@@ -37,8 +40,9 @@ const App = () => (
         title={c.title}
         img={c.img}
         price={c.price}/>)}
-
     </div>
+    <Form nombre="Jesus Milano" email="jesusmilano@gmail.com" />
+  </>
   );
 
 export default App;
