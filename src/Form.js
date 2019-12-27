@@ -9,14 +9,19 @@ class Form extends React.Component {
 
     this.state = {
       nombre: '',
-      email: ''
+      email: '',
+      fecha: new Date,
     }
 
     this.cambiarNombre = this.cambiarNombre.bind(this);
     this.cambiarCorreo = this.cambiarCorreo.bind(this);
+    this.cambiarFecha = this.cambiarFecha.bind(this);
 
   }
 
+  cambiarFecha(){
+    this.setState({fecha: new Date})
+  }
 
   cambiarNombre(e){
     this.setState({nombre: e.target.value})
@@ -27,7 +32,7 @@ class Form extends React.Component {
   render(){
     return (
       <div className="ed-grid">
-        <h1>Formulario</h1>
+        <h1>Formulario {Math.ceil(this.state.fecha/1000)}</h1>
         <form>
           <div className="form__item">
             <label>Nombre Completo</label>
@@ -52,6 +57,27 @@ class Form extends React.Component {
         </div>
       </div>
     )
+  }
+
+  componentDidMount(){
+    console.log('montado');
+
+    this.intervaloFecha = setInterval( () => {
+
+      this.cambiarFecha()
+      console.log(new Date)
+    }
+    , 1000)
+  }
+
+  componentDidUpdate(prevProps, preState){
+    // console.log(prevProps)
+    // console.log('-----------')
+    // console.log(preState)
+  }
+
+  componentWillUnmount(){
+    clearInterval(this.intervaloFecha)
   }
 
 }
