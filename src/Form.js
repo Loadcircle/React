@@ -32,7 +32,7 @@ class Form extends React.Component {
   render(){
     return (
       <div className="ed-grid">
-        <h1>Formulario {Math.ceil(this.state.fecha/1000)}</h1>
+        <h1> {this.props.name}Formulario {Math.ceil(this.state.fecha/1000)}</h1>
         <form>
           <div className="form__item">
             <label>Nombre Completo</label>
